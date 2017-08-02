@@ -9,6 +9,11 @@ public class BibliotecaApp {
     }};
     static List<String> appearBooks = new ArrayList<String>();
 
+    static List<String> movies = new ArrayList<String>(){{
+        add("1,2,3,4");
+        add("5,6,7,8");
+    }};
+    static List<String> appearMovies = new ArrayList<String>();
 
     public static void main(String[] args) {
         System.out.println("***************   Welcome to Biblioteca!   ***************");
@@ -18,7 +23,8 @@ public class BibliotecaApp {
         int flag = 0;
         while (true) {
             try {
-                System.out.println("\n********************   Main Menu   ********************\nList Books(1)   Checkout Book(2)   Return book(3)   Quit(4)");
+                System.out.println("\n********************   Main Menu   ********************\nList Books(1)   Check-out Book(2)   Return book(3)   " +
+                        "\nList Movies(4)     Check-out Movies(5)     Quit(6)");
 
                 int select = input.nextInt();
                 switch (select) {
@@ -28,7 +34,7 @@ public class BibliotecaApp {
                             String name = books.get(i).split(",")[0];
                             String author = books.get(i).split(",")[1];
                             String year = books.get(i).split(",")[2];
-                            System.out.printf(name + "          " + author + "          " + year + "          \n");
+                            System.out.printf(name + "          " + author + "          " + year + "\n");
                         }
                         break;
                     case 2:
@@ -36,8 +42,7 @@ public class BibliotecaApp {
                         String name = input.next();
 
                         int out = 0;
-                        int i = 0;
-                        for(i = 0;i < books.size();i++){
+                        for(int i = 0;i < books.size();i++){
                             String nameInList = books.get(i).split(",")[0];
                             String checkoutBook = "";
                             if(name.equals(nameInList)){
@@ -57,8 +62,7 @@ public class BibliotecaApp {
                         System.out.printf("Input the name of the book:\n");
                         name = input.next();
 
-                        i = 0;
-                        for(i = 0;i < appearBooks.size();i++){
+                        for(int i = 0;i < appearBooks.size();i++){
                             String nameInList = appearBooks.get(i).split(",")[0];
                             String returnBook = "";
                             if(name.equals(nameInList)){
@@ -74,6 +78,18 @@ public class BibliotecaApp {
                             System.out.printf("That is not a valid book to return.\n");
                         break;
                     case 4:
+                        System.out.printf("Name     Year     Director     Movie Rating\n");
+                        for (int i = 0; i < movies.size(); i++) {
+                            name = movies.get(i).split(",")[0];
+                            String year = movies.get(i).split(",")[1];
+                            String director = movies.get(i).split(",")[2];
+                            String movieRating = movies.get(i).split(",")[3];
+                            System.out.printf(name + "          " + year + "          " + director + "         " + movieRating + "\n");
+                        }
+                        break;
+                    case 5:
+                        break;
+                    case 6:
                         flag = 1;
                         break;
                     default:
